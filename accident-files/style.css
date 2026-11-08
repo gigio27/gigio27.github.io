@@ -53,4 +53,14 @@ footer.site { padding-top: 16px; padding-bottom: 40px; border-top: 1px solid var
   .facts { grid-template-columns: 1fr; gap: 2px; }
   .facts dt { margin-top: 8px; }
   .facts dt:first-child { margin-top: 0; }
+  /* The transcript reads as a list on a phone: time and speaker on one line, words below. */
+  table.cvr, table.cvr tbody, table.cvr tr, table.cvr td { display: block; }
+  table.cvr tr:first-child { display: none; }
+  table.cvr tr { padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+  table.cvr tr:last-child { border-bottom: 0; }
+  table.cvr td { padding: 0; border: 0; }
+  table.cvr td:first-child, table.cvr td:nth-child(2) { display: inline; font-size: 13px; }
+  table.cvr td:first-child:not(:empty) + td { margin-left: 8px; }
+  table.cvr td:nth-child(2) { min-width: 0; }
+  table.cvr td:nth-child(3) { margin-top: 2px; }
 }
