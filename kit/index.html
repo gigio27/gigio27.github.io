@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A documentary a night</title>
+<meta name="description" content="An AI agent that researches, writes, fact-checks, illustrates, narrates and uploads a long-form documentary every night. Waitlist for the kit.">
+<style>
+  :root {
+    --bg: #f7f5f0; --surface: #ffffff; --fg: #1b1a17; --muted: #5f5c54; --rule: #e2ded3;
+    --accent: #b5541c; --accent-fg: #ffffff; --chip: #efe9dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121211; --surface: #1b1a18; --fg: #edebe5; --muted: #a9a59b; --rule: #2d2b27; --accent: #e07a3c; --accent-fg: #121211; --chip: #26241f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 16px 72px; }
+  .kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+  h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.12; margin: 0 0 16px; letter-spacing: -.01em; }
+  .lede { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: inline-block; background: var(--accent); color: var(--accent-fg); text-decoration: none; font-weight: 600; padding: 13px 22px; border-radius: 10px; }
+  .cta:hover { filter: brightness(1.06); }
+  .note { font-size: 14px; color: var(--muted); margin-top: 10px; }
+  h2 { font-size: 22px; margin: 52px 0 12px; }
+  ol.steps { padding-left: 22px; margin: 0; }
+  ol.steps li { margin: 10px 0; }
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .stat b { display: block; font-size: 26px; line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 15px; }
+  ul.kit { padding-left: 22px; margin: 0; }
+  ul.kit li { margin: 8px 0; }
+  .not { background: var(--chip); border-radius: 12px; padding: 18px 20px; margin-top: 8px; }
+  .not p { margin: 0; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 16px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+  a { color: var(--accent); }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Built with Claude Code</p>
+  <h1>A documentary a night, made by an AI agent</h1>
+  <p class="lede">I built an engine that researches, writes, fact-checks, illustrates, narrates and uploads a twelve-minute documentary every night, on a laptop. It has made 93 films in under three months. I'm thinking of packaging it as a kit. Would you want it?</p>
+  <a class="cta" href="https://forms.gle/4723vuCvjiVNjkA2A">Join the waitlist</a>
+  <p class="note">One email when the kit exists, if it ever does. Nothing else.</p>
+
+  <h2>What it does, every night</h2>
+  <ol class="steps">
+    <li>Picks a subject from what is already working on other channels, ranked by how far a video beat its own channel's median, not by raw views.</li>
+    <li>Researches it from real sources and stores their text.</li>
+    <li>Writes the script, then checks every number, date and name against those stored sources. A claim with no source fails the run. Three failures and the topic is dropped for good.</li>
+    <li>Plans 60 to 120 shots and fetches public-domain and CC BY archives (US National Archives, Library of Congress, NASA, Wikimedia Commons). Share-alike and non-commercial licences are refused in code, and a small vision model looks at each picture before it is used.</li>
+    <li>Narrates, renders with ffmpeg one scene at a time (resumable, cached per scene), and adds subtitles.</li>
+    <li>Uploads, then pulls the retention curves every day and turns them into rules for the next scripts.</li>
+  </ol>
+
+  <h2>The honest numbers</h2>
+  <div class="stats">
+    <div class="stat"><b>93</b><span>long films, plus about 300 Shorts</span></div>
+    <div class="stat"><b>~52,000</b><span>views in total</span></div>
+    <div class="stat"><b>51</b><span>subscribers. It is not a money machine.</span></div>
+    <div class="stat"><b>A few cents</b><span>of API calls per film. The rest runs on a Claude subscription and local models.</span></div>
+  </div>
+
+  <h2>What the kit would contain</h2>
+  <ul class="kit">
+    <li>The Claude Code skills that run the night: subject, research, script, fact check, scene plan.</li>
+    <li>The Python engine: archive routing with licence checks, long-form ffmpeg assembly, YouTube upload and analytics collection.</li>
+    <li>The night routine and its guardrails: budget caps, anti-template rules, the fact-check gate.</li>
+    <li>A written walkthrough of the architecture, and of the mistakes that cost the most.</li>
+  </ul>
+
+  <h2>What it is not</h2>
+  <div class="not">
+    <p>Not a promise of views or income. The channel it runs has 51 subscribers. YouTube does not pay for AI content that looks mass-produced, and no kit changes that. This is an engineering kit for people who want to build and understand their own pipeline.</p>
+  </div>
+
+  <h2>Questions</h2>
+  <dl>
+    <dt>What does it run on?</dt>
+    <dd>Python 3.12, SQLite, ffmpeg and Claude Code, with local voice, image and video models on Apple Silicon. A few hosted calls cost cents.</dd>
+    <dt>How much will it cost?</dt>
+    <dd>Not decided. The waitlist asks what it would be worth to you.</dd>
+    <dt>When?</dt>
+    <dd>Only if enough people sign up in the next two weeks. If not, it stays a personal project.</dd>
+  </dl>
+
+  <footer>
+    <a href="https://github.com/gigio27/gigio27.github.io/issues">Contact</a>
+  </footer>
+</main>
+</body>
+</html>
